@@ -46,12 +46,23 @@ function makeResponsive() {
 
     // Function for updating xScale
     function xScale(acsData, chosenXAxis) {
-        // Create scale function for chart
+        // Create Scale Function for Chart (chosenXAxis)
         var xLinearScale = d3.scaleLinear()
-            .domain([d3.min(acsData, d => d[chosenXAxis]) *8
-                d3.max(acsData, d => d[chosenXAxis]) * 1.2
-            ])
-            .range([0, width]);
+          .domain([d3.min(acsData, d => d[chosenXAxis]) * 0.8,
+            d3.max(acsData, d => d[chosenXAxis]) * 1.2
+          ])
+          .range([0, width]);
         return xLinearScale;
-    }
+      }
+
+    // Function for updating yScale
+    function yScale(acsData, chosenYAxis) {
+        // Create Scale Functions for Chart (chosenYAxis)
+        var yLinearScale = d3.scaleLinear()
+          .domain([d3.min(acsData, d => d[chosenYAxis]) * 0.8,
+            d3.max(acsData, d => d[chosenYAxis]) * 1.2
+          ])
+          .range([height, 0]);
+        return yLinearScale;
+      }
 }
