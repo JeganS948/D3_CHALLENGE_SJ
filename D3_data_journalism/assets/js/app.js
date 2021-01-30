@@ -83,4 +83,26 @@ function makeResponsive() {
              .call(leftAxis);
         return yAxis;
     }
+
+    // For Change in x or y axis
+    // Function for updating circles group with a transition to new circles
+    function renderCircles(circlesGroup, newXScale, chosenXAxis, newYScale, chosenYAxis) {
+
+    circlesGroup.transition()
+      .duration(1000)
+      .attr("cx", d => newXScale(d[chosenXAxis]))
+      .attr("cy", d => newYScale(d[chosenYAxis]));
+    return circlesGroup;
+    }
+
+    // Function for updating text group with a transition to new text
+    function renderText(textGroup, newXScale, chosenXAxis, newYScale, chosenYAxis) {
+
+    textGroup.transition()
+      .duration(1000)
+      .attr("x", d => newXScale(d[chosenXAxis]))
+      .attr("y", d => newYScale(d[chosenYAxis]))
+      .attr("text-anchor", "middle");
+    return textGroup;
+    }
 }
