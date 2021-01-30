@@ -170,5 +170,17 @@ function makeResponsive() {
             .on("mouseout", function(data) {
                 toolTip.hide(data);
             });
+
+        // Create text tooltip in chart
+        textGroup.call(toolTip)
+        // Create event listeners displaying and hiding text tooltip
+        textGroup.on("mouseover", function(data) {
+            toolTip.show(data, this);
+        })
+            // Onmouseout event
+            .on("mouseout", function(data) {
+                toolTip.hide(data);
+            })
+        return circlesGroup;
     }
 }
