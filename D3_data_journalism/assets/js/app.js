@@ -183,4 +183,18 @@ function makeResponsive() {
             })
         return circlesGroup;
     }
+
+    // Initalize data from file and execute below code
+    d3.csv("./assets/data/data.csv").then(function(demoData) {
+        console.log(demoData);
+
+        // Parse data
+        demoData.forEach(function(data) {
+            data.poverty = +data.poverty;
+            data.age = +data.age;
+            data.income = +data.income;
+            data.healthcare = +data.healthcare;
+            data.obesity = +data.obesity;
+            data.smokes = +data.smokes;
+        });
 }
