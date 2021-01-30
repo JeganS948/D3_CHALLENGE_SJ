@@ -107,7 +107,7 @@ function makeResponsive() {
     // Function to stylize x-axis values for tooltips
     function styleX(value, chosenXAxis) {
         // Stylize based on chosen variable
-        // Poverty percentage
+        // Poverty percentage of sample population
         if (chosenXAxis === 'poverty') {
             return `${value}%`;
         }
@@ -122,4 +122,6 @@ function makeResponsive() {
     }
 
     // Function used for updating circles group with new tooltip
+    function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
+    }
 }
