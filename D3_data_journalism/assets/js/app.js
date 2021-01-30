@@ -27,5 +27,12 @@ function makeResponsive() {
     // Width and height using margins and parameters
     var width = svgWidth - margin.right - margin.left;
     var height = svgHeight - margin.top - margin.bottom;
-    
+
+    // Append division class chart to scatter element
+    var chart = d3.select("#scatter").append("div").classed("chart", true);
+
+    // Append SVG element to the chart with appropriate height and width
+    var svg = chart.append("svg")
+        .attr("width", svgWidth)
+        .attr("height", svgHeight);
 }
