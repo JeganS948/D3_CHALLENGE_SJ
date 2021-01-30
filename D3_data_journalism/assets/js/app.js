@@ -150,5 +150,15 @@ function makeResponsive() {
         else {
             var yLabel = "Smokers (%)"
         }
+
+         // Initialize tooltip
+        var toolTip = d3.tip()
+        .attr("class", "tooltip d3-tip")
+        .offset([90, 90])
+        .html(function(d) {
+            return (`<strong>${d.abbr}</strong><br>${xLabel} ${d[chosenXAxis]}<br>${yLabel} ${d[chosenYAxis]}`);
+        });
+        // Create circles tooltip in chart
+        circlesGroup.call(toolTip);
     }
 }
