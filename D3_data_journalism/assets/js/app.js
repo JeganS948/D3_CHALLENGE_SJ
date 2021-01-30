@@ -190,11 +190,30 @@ function makeResponsive() {
 
         // Parse data
         demoData.forEach(function(data) {
-            data.poverty = +data.poverty;
-            data.age = +data.age;
-            data.income = +data.income;
-            data.healthcare = +data.healthcare;
-            data.obesity = +data.obesity;
-            data.smokes = +data.smokes;
+            data.poverty = + data.poverty;
+            data.age = + data.age;
+            data.income = + data.income;
+            data.healthcare = + data.healthcare;
+            data.obesity = + data.obesity;
+            data.smokes = + data.smokes;
         });
+
+        // Create x and y linear scale function for chart
+        var xLinearScale = xScale(demoData, chosenXAxis);
+        var yLinearScale = yScale(demoData, chosenYAxis);
+         // Create Axis Functions for the Chart
+        var bottomAxis = d3.axisBottom(xLinearScale);
+        var leftAxis = d3.axisLeft(yLinearScale);
+
+        // Append xAxis to the Chart
+        var xAxis = chartGroup.append("g")
+            .classed("x-axis", true)
+            .attr("transform", `translate(0, ${height})`)
+            .call(bottomAxis);
+
+        // Append yAxis to the Chart
+        var yAxis = chartGroup.append("g")
+            .classed("y-axis", true)
+            .call(leftAxis);
+    }    
 }
