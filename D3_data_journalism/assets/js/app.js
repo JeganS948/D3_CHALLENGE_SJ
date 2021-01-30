@@ -38,5 +38,9 @@ function makeResponsive() {
     
     // Append SVG group
     var chartGroup = svg.append("g")
-        .attr("transform", `translate(${margin.left}, ${margin.top})`)
+        .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+    // Initial parameters
+    var chosenXAxis = "poverty";
+    var chosenYAxis = "healthcare";
 }
