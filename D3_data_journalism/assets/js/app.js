@@ -73,5 +73,14 @@ function makeResponsive() {
              .duration(1000)
              .call(bottomAxis);
         return xAxis;
-  }
+    }
+
+    // Function for Updating yAxis
+    function renderYAxes(newYScale, yAxis) {
+        var leftAxis = d3.axisLeft(newYScale);
+            yAxis.transition()
+             .duration(1000)
+             .call(leftAxis);
+        return yAxis;
+    }
 }
