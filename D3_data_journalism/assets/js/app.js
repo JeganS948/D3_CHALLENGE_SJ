@@ -43,4 +43,15 @@ function makeResponsive() {
     // Initial parameters
     var chosenXAxis = "poverty";
     var chosenYAxis = "healthcare";
+
+    // Function for updating xScale
+    function xScale(acsData, chosenXAxis) {
+        // Create scale function for chart
+        var xLinearScale = d3.scaleLinear()
+            .domain([d3.min(acsData, d => d[chosenXAxis]) *8
+                d3.max(acsData, d => d[chosenXAxis]) * 1.2
+            ])
+            .range([0, width]);
+        return xLinearScale;
+    }
 }
