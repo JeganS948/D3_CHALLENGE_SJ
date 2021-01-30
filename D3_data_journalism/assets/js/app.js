@@ -126,7 +126,7 @@ function makeResponsive() {
         // Select x label
         // Poverty percentage of sample population
         if (chosenXAxis === 'poverty') {
-            var xLabel = "Poverty:";
+            var xLabel = "Poverty (%)";
         }
         // Household income in dollars
         else if (chosenXAxis === 'income') {
@@ -134,21 +134,21 @@ function makeResponsive() {
         }
         // Age (number)
         else {
-            var xLabel = "Age:";
+            var xLabel = "Age (Median)";
         }
 
         // Select y label
         // Percentage of population sample lacking healthcare
         if (chosenYAxis === 'healthcare') {
-            var yLabel = "No Healthcare:"
+            var yLabel = "Lack of Healthcare (%)"
         }
         // Percentage obese population sample
         else if (chosenYAxis === 'obesity') {
-            var yLabel = "Obesity:"
+            var yLabel = "Obesity (%):"
         }
         // Smoking percentage of sample population
         else {
-            var yLabel = "Smokers:"
+            var yLabel = "Smokers (%)"
         }
     }
 }
