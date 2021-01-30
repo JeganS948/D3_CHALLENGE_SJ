@@ -35,4 +35,8 @@ function makeResponsive() {
     var svg = chart.append("svg")
         .attr("width", svgWidth)
         .attr("height", svgHeight);
+    
+    // Append SVG group
+    var chartGroup = svg.append("g")
+        .attr("transform", `translate(${margin.left}, ${margin.top})`)
 }
