@@ -65,4 +65,13 @@ function makeResponsive() {
           .range([height, 0]);
         return yLinearScale;
       }
+
+    // Function for Updating xAxis
+    function renderXAxes(newXScale, xAxis) {
+        var bottomAxis = d3.axisBottom(newXScale);
+            xAxis.transition()
+             .duration(1000)
+             .call(bottomAxis);
+        return xAxis;
+  }
 }
