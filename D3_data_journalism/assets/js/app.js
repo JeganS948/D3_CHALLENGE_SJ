@@ -87,7 +87,6 @@ function makeResponsive() {
     // For Change in x or y axis
     // Function for updating circles group with a transition to new circles
     function renderCircles(circlesGroup, newXScale, chosenXAxis, newYScale, chosenYAxis) {
-
     circlesGroup.transition()
       .duration(1000)
       .attr("cx", d => newXScale(d[chosenXAxis]))
@@ -97,7 +96,6 @@ function makeResponsive() {
 
     // Function for updating text group with a transition to new text
     function renderText(textGroup, newXScale, chosenXAxis, newYScale, chosenYAxis) {
-
     textGroup.transition()
       .duration(1000)
       .attr("x", d => newXScale(d[chosenXAxis]))
@@ -105,4 +103,23 @@ function makeResponsive() {
       .attr("text-anchor", "middle");
     return textGroup;
     }
+
+    // Function to stylize x-axis values for tooltips
+    function styleX(value, chosenXAxis) {
+        // Stylize based on chosen variable
+        // Poverty percentage
+        if (chosenXAxis === 'poverty') {
+            return `${value}%`;
+        }
+        // Household income in dollars
+        else if (chosenXAxis === 'income') {
+            return `$${value}`;
+        }
+        // age (number)
+        else {
+            return `${value}`;
+        }
+    }
+
+    // Function used for updating circles group with new tooltip
 }
