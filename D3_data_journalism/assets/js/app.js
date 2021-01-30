@@ -23,4 +23,9 @@ function makeResponsive() {
         bottom: 90,
         left: 100,
     };
+
+    // Width and height using margins and parameters
+    var width = svgWidth - margin.right - margin.left;
+    var height = svgHeight - margin.top - margin.bottom;
+    
 }
