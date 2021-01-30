@@ -158,7 +158,13 @@ function makeResponsive() {
         .html(function(d) {
             return (`<strong>${d.abbr}</strong><br>${xLabel} ${d[chosenXAxis]}<br>${yLabel} ${d[chosenYAxis]}`);
         });
+        
+        // Add Events
         // Create circles tooltip in chart
         circlesGroup.call(toolTip);
+        // Create event listeners displaying and hiding circles tooltip
+        circlesGroup.on("mouseover", function(data) {
+        toolTip.show(data, this);
+      })
     }
 }
