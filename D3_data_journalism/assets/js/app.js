@@ -15,7 +15,7 @@ function makeResponsive() {
 
     // SVG parameter setup
     var svgWidth = 980;
-    var svgHeight = 620;
+    var svgHeight = 600;
 
     // SVG margin setup
     var margin = {
