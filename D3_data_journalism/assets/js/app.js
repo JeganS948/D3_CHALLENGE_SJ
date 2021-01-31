@@ -2,7 +2,7 @@
 
 // Chart setup
 // Automatic resize of the chart
-function makeResponsive(); {
+function makeResponsive() {
 
     // Loads, remove & replace browser with a resized version of chart [condition: SVG Area is not empty]
     var svgArea = d3.select("body").select("svg");
@@ -191,7 +191,7 @@ function makeResponsive(); {
     };
 
     // Initalize data from file and execute below code
-    d3.csv("./assets/data/data.csv").then(function(demoData) {
+    d3.csv("assets/data/data.csv").then(function(demoData) {
         console.log(demoData);
 
         // Parse data
