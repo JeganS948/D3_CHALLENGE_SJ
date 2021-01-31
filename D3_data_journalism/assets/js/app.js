@@ -239,5 +239,9 @@ function makeResponsive() {
             .attr("font-size", "12px")
             .attr("text-anchor", "middle")
             .attr("fill", "white");
+
+        // Create group for 3 x-axis labels
+        var xLabelsGroup = chartGroup.append("g")
+            .attr("transform", `translate(${width / 2}, ${height + 20 + margin.top})`);
     }    
 }
