@@ -2,7 +2,7 @@
 
 // Chart setup
 // Automatic resize of the chart
-function makeResponsive() {
+function makeResponsive(); {
 
     // Loads, remove & replace browser with a resized version of chart [condition: SVG Area is not empty]
     var svgArea = d3.select("body").select("svg");
@@ -46,6 +46,7 @@ function makeResponsive() {
 
     // Function for updating xScale
     function xScale(demoData, chosenXAxis) {
+
         // Create Scale Function for Chart (chosenXAxis)
         var xLinearScale = d3.scaleLinear()
           .domain([d3.min(demoData, d => d[chosenXAxis]) * 0.8,
@@ -53,10 +54,11 @@ function makeResponsive() {
           ])
           .range([0, width]);
         return xLinearScale;
-      }
+      };
 
     // Function for updating yScale
     function yScale(demoData, chosenYAxis) {
+
         // Create Scale Functions for Chart (chosenYAxis)
         var yLinearScale = d3.scaleLinear()
           .domain([d3.min(demoData, d => d[chosenYAxis]) * 0.8,
@@ -64,7 +66,7 @@ function makeResponsive() {
           ])
           .range([height, 0]);
         return yLinearScale;
-      }
+      };
 
     // Function for Updating xAxis
     function renderXAxes(newXScale, xAxis) {
@@ -73,7 +75,7 @@ function makeResponsive() {
              .duration(1000)
              .call(bottomAxis);
         return xAxis;
-    }
+    };
 
     // Function for Updating yAxis
     function renderYAxes(newYScale, yAxis) {
@@ -82,7 +84,7 @@ function makeResponsive() {
              .duration(1000)
              .call(leftAxis);
         return yAxis;
-    }
+    };
 
     // For Change in x or y axis
     // Function for updating circles group with a transition to new circles
@@ -92,7 +94,7 @@ function makeResponsive() {
       .attr("cx", d => newXScale(d[chosenXAxis]))
       .attr("cy", d => newYScale(d[chosenYAxis]));
     return circlesGroup;
-    }
+    };
 
     // Function for updating text group with a transition to new text
     function renderText(textGroup, newXScale, chosenXAxis, newYScale, chosenYAxis) {
@@ -102,10 +104,11 @@ function makeResponsive() {
       .attr("y", d => newYScale(d[chosenYAxis]))
       .attr("text-anchor", "middle");
     return textGroup;
-    }
+    };
 
     // Function to stylize x-axis values for tooltips
     function styleX(value, chosenXAxis) {
+
         // Stylize based on chosen variable
         // Poverty percentage of sample population
         if (chosenXAxis === 'poverty') {
@@ -119,10 +122,11 @@ function makeResponsive() {
         else {
             return `${value}`;
         }
-    }
+    };
 
     // Function used for updating circles group with new tooltip
     function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
+
         // Select x label
         // Poverty percentage of sample population
         if (chosenXAxis === 'poverty') {
@@ -135,7 +139,7 @@ function makeResponsive() {
         // Age (number)
         else {
             var xLabel = "Age (Median)";
-        }
+        };
 
         // Select y label
         // Percentage of population sample lacking healthcare
@@ -149,7 +153,7 @@ function makeResponsive() {
         // Smoking percentage of sample population
         else {
             var yLabel = "Smokers (%)"
-        }
+        };
 
          // Initialize tooltip
         var toolTip = d3.tip()
@@ -162,6 +166,7 @@ function makeResponsive() {
         // Add Events
         // Create circles tooltip in chart
         circlesGroup.call(toolTip);
+
         // Create event listeners displaying and hiding circles tooltip
         circlesGroup.on("mouseover", function(data) {
         toolTip.show(data, this);
@@ -173,6 +178,7 @@ function makeResponsive() {
 
         // Create text tooltip in chart
         textGroup.call(toolTip)
+
         // Create event listeners displaying and hiding text tooltip
         textGroup.on("mouseover", function(data) {
             toolTip.show(data, this);
@@ -182,7 +188,7 @@ function makeResponsive() {
                 toolTip.hide(data);
             })
         return circlesGroup;
-    }
+    };
 
     // Initalize data from file and execute below code
     d3.csv("./assets/data/data.csv").then(function(demoData) {
@@ -201,6 +207,7 @@ function makeResponsive() {
         // Create x and y linear scale function for chart
         var xLinearScale = xScale(demoData, chosenXAxis);
         var yLinearScale = yScale(demoData, chosenYAxis);
+
          // Create Axis Functions for the Chart
         var bottomAxis = d3.axisBottom(xLinearScale);
         var leftAxis = d3.axisLeft(yLinearScale);
@@ -260,7 +267,7 @@ function makeResponsive() {
             .attr("x", 0)
             .attr("y", 40)
             .attr("value", "age")
-            .text("Age (Median)")
+            .text("Age (Median)");
 
         // Append label for income
         var incomeLabel = xLabelsGroup.append("text")
@@ -269,7 +276,7 @@ function makeResponsive() {
             .attr("x", 0)
             .attr("y", 60)
             .attr("value", "income")
-            .text("Household Income (Median)")
+            .text("Household Income (Median)");
 
         // create group for 3 y-axis labels
         var yLabelsGroup = chartGroup.append("g")
@@ -317,7 +324,7 @@ function makeResponsive() {
             
             // Get value of selection
             var value = d3.select(this).attr("value");
-            if (value !== chosenXAxis) {
+            if (value !== chosenXAxis); {
             
             // Replace chosenXAxis with value
             chosenXAxis = value;
@@ -332,7 +339,7 @@ function makeResponsive() {
             circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
 
             // Update text with new values
-            textGroup = renderText(textGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis)
+            textGroup = renderText(textGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
 
             // Update tooltips with new details
             circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup);
@@ -371,7 +378,7 @@ function makeResponsive() {
                     .classed("active", true)
                     .classed("inactive", false);
             }   
-        }
+        };
       
         // y axis labels event listener
         yLabelsGroup.selectAll("text")
@@ -396,7 +403,7 @@ function makeResponsive() {
                 circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
 
                 // Update text with new y values
-                textGroup = renderText(textGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis)
+                textGroup = renderText(textGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
 
                 // Update tooltips with new detail
                 circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
@@ -433,8 +440,8 @@ function makeResponsive() {
                         .classed("active", true)
                         .classed("inactive", false);
                     }
-                }
-            }
+                };
+            });
         });
     });
-};
+}
