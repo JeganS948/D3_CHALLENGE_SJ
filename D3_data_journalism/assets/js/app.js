@@ -337,9 +337,6 @@ function makeResponsive() {
             // Update xAxis with transition
             xAxis = renderXAxes(xLinearScale, xAxis);
 
-            // Update y Axis with tranistion
-            yAxis = renderYAxes(yLinearScale, yAxis);
-
             // Update circle with new values
             circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
 
@@ -388,9 +385,11 @@ function makeResponsive() {
         // y axis labels event listener
         yLabelsGroup.selectAll("text")
             .on("click", function() {
-
+        
         // Get value of select detail
         var value = d3.select(this).attr("value");
+        
+            console.log(value)
 
             // Check if value is same as current axis
             if (value != chosenYAxis) {
@@ -402,7 +401,7 @@ function makeResponsive() {
                 yLinearScale = yScale(censusData, chosenYAxis);
 
                 // Update x axis with transition
-                yAxis = renderAxesY(yLinearScale, yAxis);
+                yAxis = renderYAxes(yLinearScale, yAxis);
 
                 // Update circle with new y values
                 circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
