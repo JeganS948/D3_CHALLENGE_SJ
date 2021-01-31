@@ -205,18 +205,18 @@ function makeResponsive() {
         var bottomAxis = d3.axisBottom(xLinearScale);
         var leftAxis = d3.axisLeft(yLinearScale);
 
-        // Append xAxis to the Chart
+        // Append xAxis to chart
         var xAxis = chartGroup.append("g")
             .classed("x-axis", true)
             .attr("transform", `translate(0, ${height})`)
             .call(bottomAxis);
 
-        // Append yAxis to the Chart
+        // Append yAxis to chart
         var yAxis = chartGroup.append("g")
             .classed("y-axis", true)
             .call(leftAxis);
 
-        // Create & Append Initial Circles
+        // Create and append initial circles
         var circlesGroup = chartGroup.selectAll(".stateCircle")
             .data(acsData)
             .enter()
@@ -227,7 +227,7 @@ function makeResponsive() {
             .attr("r", 15)
             .attr("opacity", ".75");
 
-        // Append Text to Circles
+        // Append text to circles
         var textGroup = chartGroup.selectAll(".stateText")
             .data(acsData)
             .enter()
