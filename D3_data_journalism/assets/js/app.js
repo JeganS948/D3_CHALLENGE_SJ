@@ -326,6 +326,7 @@ function makeResponsive() {
             
             // Get value of selection
             var value = d3.select(this).attr("value");
+                console.log(value)
             if (value !== chosenXAxis); {
             
             // Replace chosenXAxis with value
