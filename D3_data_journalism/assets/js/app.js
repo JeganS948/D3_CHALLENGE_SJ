@@ -1,4 +1,5 @@
 // D3 Homework challenge - Data Journalism 
+makeResponsive();
 
 // Chart setup
 // Automatic resize of the chart
@@ -14,13 +15,13 @@ function makeResponsive() {
 
     // SVG parameter setup
     var svgWidth = 980;
-    var svgHeight = 600;
+    var svgHeight = 620;
 
     // SVG margin setup
     var margin = {
         top: 20,
         right: 40,
-        bottom: 90,
+        bottom: 100,
         left: 100,
     };
 
@@ -125,7 +126,7 @@ function makeResponsive() {
     };
 
     // Function used for updating circles group with new tooltip
-    function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
+    function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup) {
 
         // Select x label
         // Poverty percentage of sample population
@@ -192,8 +193,7 @@ function makeResponsive() {
 
     // Initalize data from file and execute below code
     d3.csv("assets/data/data.csv").then(function(demoData) {
-        console.log(demoData);
-
+        
         // Parse data
         demoData.forEach(function(data) {
             data.poverty = + data.poverty;
@@ -203,6 +203,8 @@ function makeResponsive() {
             data.obesity = + data.obesity;
             data.smokes = + data.smokes;
         });
+
+        console.log(demoData);
 
         // Create x and y linear scale function for chart
         var xLinearScale = xScale(demoData, chosenXAxis);
@@ -406,7 +408,7 @@ function makeResponsive() {
                 textGroup = renderText(textGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
 
                 // Update tooltips with new detail
-                circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
+                circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup);
 
                 // Change classes to change bold text
                 if (chosenYAxis === "obesity") {
