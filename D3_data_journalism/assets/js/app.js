@@ -408,7 +408,7 @@ function makeResponsive(); {
                 // Update tooltips with new detail
                 circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
 
-                //change classes to change bold text
+                // Change classes to change bold text
                 if (chosenYAxis === "obesity") {
                     obesityLabel
                         .classed("active", true)
