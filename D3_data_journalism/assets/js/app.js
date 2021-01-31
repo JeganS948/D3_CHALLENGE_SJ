@@ -218,7 +218,7 @@ function makeResponsive() {
 
         // Create and append initial circles
         var circlesGroup = chartGroup.selectAll(".stateCircle")
-            .data(acsData)
+            .data(demoData)
             .enter()
             .append("circle")
             .attr("cx", d => xLinearScale(d[chosenXAxis]))
@@ -229,7 +229,7 @@ function makeResponsive() {
 
         // Append text to circles
         var textGroup = chartGroup.selectAll(".stateText")
-            .data(acsData)
+            .data(demoData)
             .enter()
             .append("text")
             .attr("x", d => xLinearScale(d[chosenXAxis]))
@@ -307,5 +307,70 @@ function makeResponsive() {
             .attr("transform", "rotate(-90)")
             .attr("value", "obesity")
             .text("Obese (%)");
-    }    
+        
+        // Update toolTip function
+        var circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup);
+
+        // xAxis labels event listener
+        xLabelsGroup.selectAll("text")
+            .on("click", function() {
+            
+            // Get value of selection
+            var value = d3.select(this).attr("value");
+            if (value !== chosenXAxis) {
+            
+            // Replace chosenXAxis with value
+            chosenXAxis = value;
+
+            // Update xScale with new data
+            xLinearScale = xScale(demoData, chosenXAxis);
+
+            // Update xAxis with transition
+            xAxis = renderXAxes(xLinearScale, xAxis);
+
+            // Update circle with new values
+            circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
+
+            // Update text with new values
+            textGroup = renderText(textGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis)
+
+            // Update tooltips with new details
+            circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup);
+
+            // Change class to bold text
+            if (chosenXAxis === "poverty") {
+                povertyLabel
+                    .classed("active", true)
+                    .classed("inactive", false);
+                ageLabel
+                    .classed("active", false)
+                    .classed("inactive", true);
+                incomeLabel
+                    .classed("active", false)
+                    .classed("inactive", true);
+            }
+            else if (chosenXAxis === "age") {
+                povertyLabel
+                    .classed("active", false)
+                    .classed("inactive", true);
+                ageLabel
+                    .classed("active", true)
+                    .classed("inactive", false);
+                incomeLabel
+                    .classed("active", false)
+                    .classed("inactive", true);
+            }
+            else {
+                povertyLabel
+                    .classed("active", false)
+                    .classed("inactive", true);
+                ageLabel
+                    .classed("active", false)
+                    .classed("inactive", true);
+                incomeLabel
+                    .classed("active", true)
+                    .classed("inactive", false);
+            }   
+        }
+    });    
 }
