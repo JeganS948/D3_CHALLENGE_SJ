@@ -270,5 +270,42 @@ function makeResponsive() {
             .attr("y", 60)
             .attr("value", "income")
             .text("Household Income (Median)")
+
+        // create group for 3 y-axis labels
+        var yLabelsGroup = chartGroup.append("g")
+            .attr("transform", `translate(${0 - margin.left/4}, ${(height/2)})`);
+
+        // Append label for health care
+        var healthcareLabel = yLabelsGroup.append("text")
+            .classed("aText", true)
+            .classed("active", true)
+            .attr("x", 0)
+            .attr("y", 0 - 20)
+            .attr("dy", "1em")
+            .attr("transform", "rotate(-90)")
+            .attr("value", "healthcare")
+            .text("Lacks Healthcare (%)");
+        
+        // Append label for smoke
+        var smokesLabel = yLabelsGroup.append("text")
+            .classed("aText", true)
+            .classed("inactive", true)
+            .attr("x", 0)
+            .attr("y", 0 - 40)
+            .attr("dy", "1em")
+            .attr("transform", "rotate(-90)")
+            .attr("value", "smokes")
+            .text("Smokes (%)");
+
+        // Append label for obesity
+        var obesityLabel = yLabelsGroup.append("text")
+            .classed("aText", true)
+            .classed("inactive", true)
+            .attr("x", 0)
+            .attr("y", 0 - 60)
+            .attr("dy", "1em")
+            .attr("transform", "rotate(-90)")
+            .attr("value", "obesity")
+            .text("Obese (%)");
     }    
 }
