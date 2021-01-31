@@ -280,7 +280,7 @@ function makeResponsive() {
             .attr("value", "income")
             .text("Household Income (Median)");
 
-        // create group for 3 y-axis labels
+        // Create group for 3 y-axis labels
         var yLabelsGroup = chartGroup.append("g")
             .attr("transform", `translate(${0 - margin.left/4}, ${(height/2)})`);
 
@@ -336,6 +336,9 @@ function makeResponsive() {
 
             // Update xAxis with transition
             xAxis = renderXAxes(xLinearScale, xAxis);
+
+            // Update y Axis with tranistion
+            yAxis = renderYAxes(yLinearScale, yAxis);
 
             // Update circle with new values
             circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
