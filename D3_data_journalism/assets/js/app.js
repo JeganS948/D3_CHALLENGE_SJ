@@ -388,17 +388,16 @@ function makeResponsive() {
         
         // Get value of select detail
         var value = d3.select(this).attr("value");
-        
             console.log(value)
 
             // Check if value is same as current axis
-            if (value != chosenYAxis) {
+            if (value !== chosenYAxis) {
 
                 // Replace chosenYAxis with value
                 chosenYAxis = value;
 
                 // Update y scale with new data
-                yLinearScale = yScale(censusData, chosenYAxis);
+                yLinearScale = yScale(demoData, chosenYAxis);
 
                 // Update x axis with transition
                 yAxis = renderYAxes(yLinearScale, yAxis);
