@@ -243,5 +243,32 @@ function makeResponsive() {
         // Create group for 3 x-axis labels
         var xLabelsGroup = chartGroup.append("g")
             .attr("transform", `translate(${width / 2}, ${height + 20 + margin.top})`);
+        
+        // Append label for poverty
+        var povertyLabel = xLabelsGroup.append("text")
+            .classed("aText", true)
+            .classed("active", true)
+            .attr("x", 0)
+            .attr("y", 20)
+            .attr("value", "poverty")
+            .text("In Poverty (%)");
+
+        // Append label for age
+        var ageLabel = xLabelsGroup.append("text")
+            .classed("aText", true)
+            .classed("inactive", true)
+            .attr("x", 0)
+            .attr("y", 40)
+            .attr("value", "age")
+            .text("Age (Median)")
+
+        // Append label for income
+        var incomeLabel = xLabelsGroup.append("text")
+            .classed("aText", true)
+            .classed("inactive", true)
+            .attr("x", 0)
+            .attr("y", 60)
+            .attr("value", "income")
+            .text("Household Income (Median)")
     }    
 }
