@@ -215,5 +215,29 @@ function makeResponsive() {
         var yAxis = chartGroup.append("g")
             .classed("y-axis", true)
             .call(leftAxis);
+
+        // Create & Append Initial Circles
+        var circlesGroup = chartGroup.selectAll(".stateCircle")
+            .data(acsData)
+            .enter()
+            .append("circle")
+            .attr("cx", d => xLinearScale(d[chosenXAxis]))
+            .attr("cy", d => yLinearScale(d[chosenYAxis]))
+            .attr("class", "stateCircle")
+            .attr("r", 15)
+            .attr("opacity", ".75");
+
+        // Append Text to Circles
+        var textGroup = chartGroup.selectAll(".stateText")
+            .data(acsData)
+            .enter()
+            .append("text")
+            .attr("x", d => xLinearScale(d[chosenXAxis]))
+            .attr("y", d => yLinearScale(d[chosenYAxis]*.98))
+            .text(d => (d.abbr))
+            .attr("class", "stateText")
+            .attr("font-size", "12px")
+            .attr("text-anchor", "middle")
+            .attr("fill", "white");
     }    
 }
